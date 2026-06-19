@@ -1,0 +1,298 @@
+/* ── Modal Overlay ── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 16, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ── Modal Container ── */
+.modal-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+              0 0 40px rgba(94, 234, 212, 0.05);
+  box-sizing: border-box;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+  position: relative;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Close Button ── */
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #adacac;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1010;
+  transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* ── Modal Header ── */
+.modal-header {
+  padding: 40px 40px 20px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-header h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #ffffff;
+}
+
+.modal-header h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--accentColor);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* ── Tab Navigation ── */
+.modal-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 40px;
+  margin-top: 15px;
+}
+
+.modal-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #adacac;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-tab-btn:hover {
+  color: #ffffff;
+}
+
+.modal-tab-btn.active {
+  color: var(--accentColor);
+  border-bottom-color: var(--accentColor);
+}
+
+/* ── Modal Content Body ── */
+.modal-body {
+  padding: 40px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* ── Overview & Challenges Tab content ── */
+.case-study-section {
+  margin-bottom: 30px;
+}
+
+.case-study-section h5 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
+}
+
+.case-study-section p {
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: #adacac;
+  margin: 0;
+}
+
+.case-study-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.case-study-list li {
+  font-size: 15px;
+  font-weight: 300;
+  color: #eae5ec;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.case-study-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accentColor);
+  font-weight: bold;
+}
+
+/* ── Architecture Flows (Custom Nodes) ── */
+.architecture-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 35px 25px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.flow-node {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  min-width: 120px;
+}
+
+.flow-node:hover {
+  border-color: var(--accentColor);
+  box-shadow: 0 0 15px rgba(94, 234, 212, 0.2);
+  transform: translateY(-2px);
+}
+
+.flow-arrow {
+  color: var(--accentColor);
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Modal Footer ── */
+.modal-footer {
+  padding: 30px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--accentColor);
+  color: #0a0e17;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(94, 234, 212, 0.2);
+}
+
+.modal-github-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(94, 234, 212, 0.4);
+  background: #a5f3fc;
+}
+
+/* ── Responsive modal layout ── */
+@media only screen and (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-container {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 30px 20px 15px 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 26px;
+  }
+
+  .modal-tabs {
+    padding: 0 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .modal-tab-btn {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .modal-body {
+    padding: 25px 20px;
+  }
+
+  .modal-footer {
+    padding: 20px;
+  }
+
+  .flow-node {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+    margin: 5px 0;
+  }
+}

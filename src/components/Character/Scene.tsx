@@ -32,7 +32,7 @@ const Scene = () => {
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -107,6 +107,7 @@ const Scene = () => {
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
       const animate = () => {
+        if (document.hidden) return;
         requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
@@ -126,8 +127,15 @@ const Scene = () => {
         renderer.render(scene, camera);
       };
       animate();
+      
+      const onVisibilityChange = () => {
+        if (!document.hidden) animate();
+      };
+      document.addEventListener("visibilitychange", onVisibilityChange);
+      
       return () => {
         clearTimeout(debounce);
+        document.removeEventListener("visibilitychange", onVisibilityChange);
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>

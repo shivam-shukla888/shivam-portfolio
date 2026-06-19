@@ -1,0 +1,234 @@
+.why-hire-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--backgroundColor);
+  padding: 120px 0px;
+  margin-bottom: 50px;
+}
+
+.why-hire-container {
+  width: var(--cWidth);
+  margin: auto;
+}
+
+.why-hire-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.why-hire-section h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.why-hire-section h2>span {
+  color: var(--accentColor);
+}
+
+.why-hire-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: #adacac;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Why Hire Grid ── */
+.why-hire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+}
+
+/* ── Why Hire Card ── */
+.why-hire-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.why-hire-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(94, 234, 212, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+              0 0 25px rgba(94, 234, 212, 0.05);
+}
+
+.why-hire-icon {
+  font-size: 32px;
+  color: var(--accentColor);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.why-hire-card:hover .why-hire-icon {
+  transform: scale(1.1);
+}
+
+.why-hire-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+}
+
+.why-hire-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #adacac;
+  margin: 0;
+}
+
+/* ── Recruiter CTA Section ── */
+.recruiter-cta-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top left, rgba(94, 234, 212, 0.05), transparent 60%),
+              rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  box-sizing: border-box;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recruiter-cta-container h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+}
+
+.recruiter-cta-container p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #adacac;
+  margin: 0 0 30px 0;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.recruiter-cta-btns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recruiter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.recruiter-primary-btn {
+  background: var(--accentColor);
+  color: #0a0e17;
+  box-shadow: 0 4px 15px rgba(94, 234, 212, 0.2);
+}
+
+.recruiter-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(94, 234, 212, 0.4);
+  background: #a5f3fc;
+  color: #0a0e17;
+}
+
+.recruiter-secondary-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.recruiter-secondary-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 1400px) {
+  .why-hire-section h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .why-hire-section {
+    padding: 70px 0;
+  }
+  
+  .why-hire-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .why-hire-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .why-hire-section h2 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  
+  .why-hire-card {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .recruiter-cta-container {
+    padding: 40px 20px;
+  }
+  
+  .recruiter-cta-container h3 {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .why-hire-section h2 {
+    font-size: 35px;
+    line-height: 35px;
+  }
+}

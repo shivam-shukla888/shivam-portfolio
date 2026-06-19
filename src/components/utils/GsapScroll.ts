@@ -69,7 +69,8 @@ export function setCharTimeline(
         .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
         .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
         .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
-        .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
+        .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0)
+        .to(".stats-card", { y: -30, opacity: 0, stagger: 0.05, duration: 0.5 }, 0);
 
       tl2
         .to(
@@ -183,6 +184,62 @@ export function setAllTimeline() {
   } else {
     careerTimeline.fromTo(
       ".career-section",
+      { y: 0 },
+      { y: 0, duration: 0.5, delay: 0.2 },
+      0
+    );
+  }
+
+  // Engineering Journey Timeline Animation
+  const journeyTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".journey-section",
+      start: "top 30%",
+      end: "100% center",
+      scrub: true,
+      invalidateOnRefresh: true,
+    },
+  });
+  journeyTimeline
+    .fromTo(
+      ".journey-timeline",
+      { maxHeight: "10%" },
+      { maxHeight: "100%", duration: 0.5 },
+      0
+    )
+    .fromTo(
+      ".journey-timeline",
+      { opacity: 0 },
+      { opacity: 1, duration: 0.1 },
+      0
+    )
+    .fromTo(
+      ".journey-info-box",
+      { opacity: 0 },
+      { opacity: 1, stagger: 0.1, duration: 0.5 },
+      0
+    )
+    .fromTo(
+      ".journey-dot",
+      { animationIterationCount: "infinite" },
+      {
+        animationIterationCount: "1",
+        delay: 0.3,
+        duration: 0.1,
+      },
+      0
+    );
+
+  if (window.innerWidth > 1024) {
+    journeyTimeline.fromTo(
+      ".journey-section",
+      { y: 0 },
+      { y: "20%", duration: 0.5, delay: 0.2 },
+      0
+    );
+  } else {
+    journeyTimeline.fromTo(
+      ".journey-section",
       { y: 0 },
       { y: 0, duration: 0.5, delay: 0.2 },
       0

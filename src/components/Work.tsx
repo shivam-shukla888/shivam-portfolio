@@ -1,138 +1,145 @@
-import { useState, useCallback } from "react";
+import { lazy, Suspense, useState } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
+
+const ProjectModal = lazy(() => import("./ProjectModal"));
 
 const projects = [
   {
-    title: "V-Mitra: Voice AI Companion",
-    category: "AI business assistant",
-    tools: "Java, Spring Boot, React, Gemini API",
+    id: "yojnasetu" as const,
+    title: "Yojna Setu",
+    subtitle: "AI-Powered Government Scheme Discovery Platform",
+    description: "An AI-powered WhatsApp assistant helping Indian citizens discover relevant government schemes through natural language conversations.",
+    tools: ["Java", "Spring Boot", "Groq API", "Twilio WhatsApp API", "MySQL", "AWS EC2"],
+    highlights: [
+      "WhatsApp-based interaction",
+      "Multilingual support",
+      "AI-powered scheme matching",
+      "Real-world India-focused use case"
+    ],
+    image: "/images/yojnasetu.png",
+    link: "https://github.com/shivam-shukla888/Yojna-Setu",
+  },
+  {
+    id: "realguard" as const,
+    title: "RealGuard",
+    subtitle: "AI Real Estate Assistant",
+    description: "An intelligent WhatsApp assistant that helps brokers and customers manage property inquiries, automate responses, and improve engagement.",
+    tools: ["Java", "Spring Boot", "Twilio", "Groq LLM", "MySQL"],
+    highlights: [
+      "AI-driven conversations",
+      "Lead qualification",
+      "Automated customer support",
+      "Real estate workflow automation"
+    ],
+    image: "/images/realguard.png",
+    link: "https://github.com/shivam-shukla888/RealGuard",
+  },
+  {
+    id: "vmitra" as const,
+    title: "V-Mitra",
+    subtitle: "Voice AI Companion",
+    description: "Voice-enabled AI companion designed for small businesses and local vendors, enabling natural conversations and smart assistance.",
+    tools: ["Java", "Spring Boot", "React", "Gemini API"],
+    highlights: [
+      "Voice interaction",
+      "AI assistance",
+      "Small business focused",
+      "Modern conversational interface"
+    ],
     image: "/images/vmitra (1).png",
     link: "https://github.com/shivam-shukla888/V-Mitra-Smart-Ai-Companion",
-  },
-  {
-    title: "SAS AI: Handwriting Recognition",
-    category: "AI-driven recognition system",
-    tools: "Python, React, TensorFlow, CNN",
-    image: "/images/sasai (1).png",
-    link: "https://github.com/shivam-shukla888/SAS-ai---Handwriting-Recognition-System",
-  },
-  {
-    title: "QuickEats: Ordering System",
-    category: "Food ordering platform",
-    tools: "Java, Spring Boot, Hibernate, MySQL",
-    image: "/images/quickeats-final.svg",
-    link: "https://github.com/shivam-shukla888/QuickEats-Ordering-System",
   },
 ];
 
 const Work = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const goToSlide = useCallback(
-    (index: number) => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setCurrentIndex(index);
-      setTimeout(() => setIsAnimating(false), 500);
-    },
-    [isAnimating]
-  );
-
-  const goToPrev = useCallback(() => {
-    const newIndex =
-      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
-
-  const goToNext = useCallback(() => {
-    const newIndex =
-      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
+  const [selectedProjectId, setSelectedProjectId] = useState<"yojnasetu" | "realguard" | "vmitra" | null>(null);
 
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
+        <div className="work-header">
+          <h2>
+            Featured <span>Projects</span>
+          </h2>
+          <p className="work-subtitle">
+            Production-ready AI applications built with Java, Spring Boot, LLMs, and cloud infrastructure.
+          </p>
+        </div>
 
-        <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
-          <button
-            className="carousel-arrow carousel-arrow-left"
-            onClick={goToPrev}
-            aria-label="Previous project"
-            data-cursor="disable"
-          >
-            <MdArrowBack />
-          </button>
-          <button
-            className="carousel-arrow carousel-arrow-right"
-            onClick={goToNext}
-            aria-label="Next project"
-            data-cursor="disable"
-          >
-            <MdArrowForward />
-          </button>
-
-          {/* Slides */}
-          <div className="carousel-track-container">
-            <div
-              className="carousel-track"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
-            >
-              {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
-                  <div className="carousel-content">
-                    <div className="carousel-info">
-                      <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
-                      <div className="carousel-details">
-                        <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
-                        <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage
-                        image={project.image}
-                        alt={project.title}
-                        link={project.link}
-                      />
-                    </div>
-                  </div>
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <div className="project-card" key={index}>
+              <div className="project-image-container">
+                <img src={project.image} alt={project.title} className="project-image" />
+                <div className="project-image-overlay">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-github-btn"
+                    data-cursor="disable"
+                  >
+                    <FaGithub /> View on GitHub
+                  </a>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          {/* Dot Indicators */}
-          <div className="carousel-dots">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to project ${index + 1}`}
-                data-cursor="disable"
-              />
-            ))}
-          </div>
+              <div className="project-content">
+                <div className="project-header-info">
+                  <h3 className="project-title">{project.title}</h3>
+                  <h4 className="project-subtitle">{project.subtitle}</h4>
+                </div>
+
+                <p className="project-description">{project.description}</p>
+
+                <div className="project-highlights">
+                  <h5>Key Highlights</h5>
+                  <ul>
+                    {project.highlights.map((highlight, idx) => (
+                      <li key={idx}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="project-tech-stack">
+                  {project.tools.map((tool, idx) => (
+                    <span key={idx} className="tech-badge">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-footer">
+                  <button
+                    onClick={() => setSelectedProjectId(project.id)}
+                    className="project-case-study-btn"
+                    data-cursor="disable"
+                  >
+                    View Case Study
+                  </button>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link-btn"
+                    data-cursor="disable"
+                  >
+                    <FaGithub className="btn-icon" /> Repository <FiExternalLink className="btn-arrow" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      {selectedProjectId && (
+        <Suspense fallback={null}>
+          <ProjectModal projectId={selectedProjectId} onClose={() => setSelectedProjectId(null)} />
+        </Suspense>
+      )}
     </div>
   );
 };

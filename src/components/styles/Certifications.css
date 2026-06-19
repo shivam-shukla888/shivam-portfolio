@@ -1,0 +1,262 @@
+.certifications-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 1;
+  height: auto;
+  margin: auto;
+  margin-bottom: 250px;
+  padding: 120px 0px;
+}
+
+.certifications-section h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(0deg, #0d9488, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-top: 50px;
+  margin-bottom: 90px;
+}
+
+.certifications-section h2>span {
+  font-family: "Geist", sans-serif;
+  font-weight: 300;
+}
+
+.certifications-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+}
+
+.certifications-info-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.certifications-info-box p {
+  width: 40%;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.certifications-info-in {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.certifications-info h3 {
+  font-size: 48px;
+  margin: 0;
+  font-weight: 500;
+  line-height: 45px;
+}
+
+.certifications-info h4 {
+  font-size: 33px;
+  line-height: 30px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.certifications-info h5 {
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 10px 0px;
+  color: var(--accentColor);
+}
+
+.certificate-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.certificate-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(20, 184, 166, 0.3);
+}
+
+.certifications-timeline {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background-image: linear-gradient(to top,
+      #14b8a6 20%,
+      var(--accentColor) 50%,
+      transparent 95%);
+  max-height: 0%;
+}
+
+.certifications-dot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: #14b8a6;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 8px #5eead4,
+    0px 0px 110px 20px #a5f3fc;
+  animation: certifications-timeline 0.8s linear infinite forwards;
+}
+
+@keyframes certifications-timeline {
+
+  10%,
+  20%,
+  50%,
+  70%,
+  90% {
+    box-shadow: 0px 0px 5px 2px #67e8f9;
+  }
+
+  10%,
+  30%,
+  0%,
+  100%,
+  64%,
+  80% {
+    box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4,
+      0px 0px 110px 20px #a5f3fc;
+  }
+}
+
+@keyframes certifications-timeline2 {
+  0% {
+    box-shadow: 0px 0px 5px 2px #67e8f9;
+  }
+
+  100% {
+    box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4,
+      0px 0px 110px 20px #a5f3fc;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .certifications-section h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+
+  .certifications-info h4 {
+    font-size: 22px;
+    line-height: 24px;
+    width: 180px;
+  }
+
+  .certifications-info h5 {
+    font-size: 17px;
+  }
+
+  .certifications-info h3 {
+    font-size: 40px;
+  }
+
+  .certifications-info-box p {
+    font-size: 14px;
+  }
+
+  .certifications-info-in {
+    width: 45%;
+    gap: 20px;
+  }
+
+  .certifications-info-box p {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .certifications-section {
+    padding: 70px 0px;
+    padding-top: 220px;
+    margin-top: -200px;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .certifications-info-box {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 70px;
+  }
+
+  .certifications-info-in,
+  .certifications-info-box p {
+    width: 100%;
+    padding-left: 10%;
+    box-sizing: border-box;
+  }
+
+  .certifications-timeline {
+    left: 0%;
+  }
+
+  .certifications-container {
+    width: calc(100% - 25px);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .certifications-info {
+    margin: 0;
+  }
+
+  .certifications-section h2 {
+    width: 100%;
+    font-size: 45px;
+    line-height: 45px;
+    margin-top: 0px;
+  }
+
+  .certifications-info-in {
+    gap: 0px;
+  }
+
+  .certifications-info h3 {
+    font-size: 33px;
+  }
+
+  .certifications-info-in,
+  .certifications-info-box p {
+    padding-left: 5%;
+  }
+
+  .certifications-section {
+    padding-top: 90px;
+    margin-top: -70px;
+
+    align-items: start;
+    place-items: inherit;
+    justify-content: left;
+  }
+}

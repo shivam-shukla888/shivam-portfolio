@@ -39,9 +39,9 @@ const Career = () => {
               </div>
             </div>
             <p>
-              Pursuing Computer Science Engineering with specialization in backend development, 
-              systems design, and AI Agent integration. Building strong foundation in 
-              software engineering principles and modern technologies.
+              Completed Computer Science Engineering (2026) with focus on backend development, 
+              systems design, and AI Agent integration. Shipped three production AI agents 
+              (Yojna Setu, RealGuard, V-Mitra) during final year using Java, Spring Boot, and LLM APIs.
             </p>
           </div>
           <div className="career-info-box">
