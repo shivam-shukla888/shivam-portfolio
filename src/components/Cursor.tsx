@@ -9,43 +9,66 @@ const Cursor = () => {
     const cursor = cursorRef.current!;
     const mousePos = { x: 0, y: 0 };
     const cursorPos = { x: 0, y: 0 };
-    document.addEventListener("mousemove", (e) => {
+
+    const onMouseMove = (e: MouseEvent) => {
       mousePos.x = e.clientX;
       mousePos.y = e.clientY;
-    });
-    requestAnimationFrame(function loop() {
-      if (!hover) {
+    };
+    document.addEventListener("mousemove", onMouseMove);
+
+    let animationFrameId: number;
+    const loop = () => {
+      if (!hover && cursor) {
         const delay = 6;
         cursorPos.x += (mousePos.x - cursorPos.x) / delay;
         cursorPos.y += (mousePos.y - cursorPos.y) / delay;
         gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
-        // cursor.style.transform = `translate(${cursorPos.x}px, ${cursorPos.y}px)`;
       }
-      requestAnimationFrame(loop);
-    });
-    document.querySelectorAll("[data-cursor]").forEach((item) => {
+      animationFrameId = requestAnimationFrame(loop);
+    };
+    animationFrameId = requestAnimationFrame(loop);
+
+    const interactiveElements = document.querySelectorAll("[data-cursor]");
+    const listeners: { element: HTMLElement; type: string; handler: any }[] = [];
+
+    interactiveElements.forEach((item) => {
       const element = item as HTMLElement;
-      element.addEventListener("mouseover", (e: MouseEvent) => {
+
+      const onMouseOver = (e: MouseEvent) => {
         const target = e.currentTarget as HTMLElement;
         const rect = target.getBoundingClientRect();
 
-        if (element.dataset.cursor === "icons") {
+        if (element.dataset.cursor === "icons" && cursor) {
           cursor.classList.add("cursor-icons");
-
           gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
-          //   cursor.style.transform = `translate(${rect.left}px,${rect.top}px)`;
           cursor.style.setProperty("--cursorH", `${rect.height}px`);
           hover = true;
         }
-        if (element.dataset.cursor === "disable") {
+        if (element.dataset.cursor === "disable" && cursor) {
           cursor.classList.add("cursor-disable");
         }
-      });
-      element.addEventListener("mouseout", () => {
-        cursor.classList.remove("cursor-disable", "cursor-icons");
+      };
+
+      const onMouseOut = () => {
+        if (cursor) {
+          cursor.classList.remove("cursor-disable", "cursor-icons");
+        }
         hover = false;
-      });
+      };
+
+      element.addEventListener("mouseover", onMouseOver);
+      element.addEventListener("mouseout", onMouseOut);
+      listeners.push({ element, type: "mouseover", handler: onMouseOver });
+      listeners.push({ element, type: "mouseout", handler: onMouseOut });
     });
+
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(animationFrameId);
+      listeners.forEach(({ element, type, handler }) => {
+        element.removeEventListener(type, handler);
+      });
+    };
   }, []);
 
   return <div className="cursor-main" ref={cursorRef}></div>;

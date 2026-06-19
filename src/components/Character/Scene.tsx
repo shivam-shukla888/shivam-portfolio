@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
-import { useLoading } from "../../context/LoadingContext";
 import handleResize from "./utils/resizeUtils";
 import {
   handleMouseMove,
@@ -11,15 +10,12 @@ import {
   handleTouchMove,
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
-import { setProgress } from "../Loading";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef(new THREE.Scene());
-  const { setLoading } = useLoading();
 
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
     if (canvasDiv.current) {
       const rect = canvasDiv.current.getBoundingClientRect();
@@ -50,28 +46,31 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      const progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
+
+      let resizeHandler: (() => void) | null = null;
+      let hoverCleanup: (() => void) | null = null;
 
       loadCharacter().then((gltf) => {
         if (gltf) {
           const animations = setAnimations(gltf);
-          hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
+          if (hoverDivRef.current) {
+            hoverCleanup = animations.hover(gltf, hoverDivRef.current) || null;
+          }
           mixer = animations.mixer;
           const character = gltf.scene;
-          setChar(character);
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-            }, 2500);
-          });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
+          
+          // Turn on lights and start character intro immediately
+          light.turnOnLights();
+          animations.startIntro();
+
+          resizeHandler = () => {
+            handleResize(renderer, camera, canvasDiv, character);
+          };
+          window.addEventListener("resize", resizeHandler);
         }
       });
 
@@ -81,34 +80,43 @@ const Scene = () => {
       const onMouseMove = (event: MouseEvent) => {
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
+      
+      let touchMoveHandler: ((e: TouchEvent) => void) | null = null;
+      let activeTouchElement: HTMLElement | null = null;
       let debounce: number | undefined;
+      
       const onTouchStart = (event: TouchEvent) => {
         const element = event.target as HTMLElement;
+        activeTouchElement = element;
         debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", (e: TouchEvent) =>
-            handleTouchMove(e, (x, y) => (mouse = { x, y }))
-          );
+          touchMoveHandler = (e: TouchEvent) =>
+            handleTouchMove(e, (x, y) => (mouse = { x, y }));
+          element?.addEventListener("touchmove", touchMoveHandler);
         }, 200);
       };
 
       const onTouchEnd = () => {
+        if (touchMoveHandler && activeTouchElement) {
+          activeTouchElement.removeEventListener("touchmove", touchMoveHandler);
+          touchMoveHandler = null;
+        }
         handleTouchEnd((x, y, interpolationX, interpolationY) => {
           mouse = { x, y };
           interpolation = { x: interpolationX, y: interpolationY };
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
+      document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+
+      let animationFrameId: number;
       const animate = () => {
         if (document.hidden) return;
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -136,18 +144,42 @@ const Scene = () => {
       return () => {
         clearTimeout(debounce);
         document.removeEventListener("visibilitychange", onVisibilityChange);
-        scene.clear();
-        renderer.dispose();
-        window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
-        );
-        if (canvasDiv.current) {
-          canvasDiv.current.removeChild(renderer.domElement);
+        document.removeEventListener("mousemove", onMouseMove);
+        
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+        if (resizeHandler) {
+          window.removeEventListener("resize", resizeHandler);
         }
         if (landingDiv) {
-          document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
+        }
+        if (touchMoveHandler && activeTouchElement) {
+          activeTouchElement.removeEventListener("touchmove", touchMoveHandler);
+        }
+        if (hoverCleanup) {
+          hoverCleanup();
+        }
+
+        // Traverse and dispose of Three.js objects
+        scene.traverse((object) => {
+          if ((object as THREE.Mesh).isMesh) {
+            const mesh = object as THREE.Mesh;
+            mesh.geometry.dispose();
+            if (Array.isArray(mesh.material)) {
+              mesh.material.forEach((m) => m.dispose());
+            } else {
+              mesh.material.dispose();
+            }
+          }
+        });
+        scene.clear();
+        renderer.dispose();
+        
+        if (canvasDiv.current) {
+          canvasDiv.current.removeChild(renderer.domElement);
         }
       };
     }

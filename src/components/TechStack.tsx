@@ -142,30 +142,6 @@ const TechStack = () => {
     return imageUrls.map((url) => loader.load(url));
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workElem = document.getElementById("work");
-      if (!workElem) return;
-      const threshold = workElem.getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
-    };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
@@ -180,6 +156,43 @@ const TechStack = () => {
         })
     );
   }, [textures]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const workElem = document.getElementById("work");
+      if (!workElem) return;
+      const threshold = workElem.getBoundingClientRect().top;
+      setIsActive(scrollY > threshold);
+    };
+
+    const clickHandlers: { element: HTMLAnchorElement; handler: () => void }[] = [];
+    document.querySelectorAll(".header a").forEach((elem) => {
+      const element = elem as HTMLAnchorElement;
+      const handler = () => {
+        const interval = setInterval(() => {
+          handleScroll();
+        }, 10);
+        setTimeout(() => {
+          clearInterval(interval);
+        }, 1000);
+      };
+      element.addEventListener("click", handler);
+      clickHandlers.push({ element, handler });
+    });
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clickHandlers.forEach(({ element, handler }) => {
+        element.removeEventListener("click", handler);
+      });
+      // Dispose materials and textures to free GPU memory
+      materials.forEach((material) => material.dispose());
+      textures.forEach((texture) => texture.dispose());
+    };
+  }, [materials, textures]);
 
   return (
     <div className="techstack">

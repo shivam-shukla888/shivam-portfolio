@@ -23,21 +23,35 @@ const Navbar = () => {
     smoother.scrollTop(0);
     smoother.paused(true);
 
+    const clickHandlers: { element: HTMLAnchorElement; handler: (e: MouseEvent) => void }[] = [];
     const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
+      const handler = (e: MouseEvent) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          const elem = e.currentTarget as HTMLAnchorElement;
-          const section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          const elemTarget = e.currentTarget as HTMLAnchorElement;
+          const section = elemTarget.getAttribute("data-href");
+          if (section) {
+            smoother.scrollTo(section, true, "top top");
+          }
         }
-      });
+      };
+      element.addEventListener("click", handler);
+      clickHandlers.push({ element, handler });
     });
-    window.addEventListener("resize", () => {
+
+    const resizeHandler = () => {
       ScrollSmoother.refresh(true);
-    });
+    };
+    window.addEventListener("resize", resizeHandler);
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+      clickHandlers.forEach(({ element, handler }) => {
+        element.removeEventListener("click", handler);
+      });
+    };
   }, []);
   return (
     <>
@@ -71,8 +85,8 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
+      <div className="landing-circle1 blob"></div>
+      <div className="landing-circle2 blob"></div>
       <div className="nav-fade"></div>
     </>
   );

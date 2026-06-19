@@ -6,21 +6,26 @@ import CurrentFocus from "./CurrentFocus";
 import EngineeringJourney from "./EngineeringJourney";
 import DeveloperHub from "./DeveloperHub";
 import WhyHireMe from "./WhyHireMe";
-import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
-import Work from "./Work";
 import setSplitText from "./utils/splitText";
+import { initialFX } from "./utils/initialFX";
 
 const TechStack = lazy(() => import("./TechStack"));
+const Work = lazy(() => import("./Work"));
+const Contact = lazy(() => import("./Contact"));
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
+
+  useEffect(() => {
+    initialFX();
+  }, []);
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -51,14 +56,18 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <WhatIDo />
             <Career />
             <Certifications />
-            <Work />
+            <Suspense fallback={<div className="section-loading">Loading Projects...</div>}>
+              <Work />
+            </Suspense>
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />
               </Suspense>
             )}
             <DeveloperHub />
-            <Contact />
+            <Suspense fallback={<div className="section-loading">Loading Contact...</div>}>
+              <Contact />
+            </Suspense>
           </div>
         </div>
       </div>

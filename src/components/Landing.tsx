@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaXTwitter, FaInstagram } from "react-icons/fa6";
 import { MdDownload, MdArrowForward } from "react-icons/md";
 
 const Landing = ({ children }: PropsWithChildren) => {
@@ -22,7 +22,7 @@ const Landing = ({ children }: PropsWithChildren) => {
 
           <div className="landing-info">
             <h2 className="landing-headline">
-              Backend Engineer & <br />
+              Backend Engineer &amp; <br />
               <span>AI Agent Developer</span>
             </h2>
 
@@ -43,6 +43,21 @@ const Landing = ({ children }: PropsWithChildren) => {
               </a>
               <a href="https://github.com/shivam-shukla888" target="_blank" rel="noopener noreferrer" className="cta-btn third-cta" data-cursor="disable">
                 <FaGithub className="cta-icon" /> GitHub Profile
+              </a>
+            </div>
+
+            <div className="landing-mobile-socials">
+              <a href="https://github.com/shivam-shukla888" target="_blank" rel="noopener noreferrer">
+                <FaGithub />
+              </a>
+              <a href="https://www.linkedin.com/in/shivam-shukla-186276374/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedinIn />
+              </a>
+              <a href="https://x.com/S888Shivam" target="_blank" rel="noopener noreferrer">
+                <FaXTwitter />
+              </a>
+              <a href="https://www.instagram.com/_shiv_am_262?utm_source=qr&igsh=eDZhbnR1NzltZm05" target="_blank" rel="noopener noreferrer">
+                <FaInstagram />
               </a>
             </div>
           </div>
