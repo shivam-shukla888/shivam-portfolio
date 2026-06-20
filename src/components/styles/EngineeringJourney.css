@@ -16,12 +16,7 @@
   font-size: 70px;
   line-height: 70px;
   font-weight: 400;
-  text-align: center;
-  background: linear-gradient(0deg, #0d9488, #ffffff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  text-align: left;
   margin-top: 50px;
   margin-bottom: 10px;
 }
@@ -35,9 +30,9 @@
   font-weight: 300;
   color: #adacac;
   max-width: 600px;
-  margin: 0 auto 90px auto;
+  margin: 0 0 90px 0;
   line-height: 1.6;
-  text-align: center;
+  text-align: left;
 }
 
 .journey-info {
@@ -94,7 +89,7 @@
   width: 3px;
   height: 100%;
   background-image: linear-gradient(to top,
-      #14b8a6 20%,
+      #10b981 20%,
       var(--accentColor) 50%,
       transparent 95%);
   max-height: 0%;
@@ -105,12 +100,12 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #14b8a6;
+  background-color: #10b981;
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 8px #5eead4,
-    0px 0px 110px 20px #a5f3fc;
+  box-shadow: 0px 0px 5px 2px #34d399, 0px 0px 15px 8px #10b981,
+    0px 0px 110px 20px #a7f3d0;
   animation: journey-timeline-anim 0.8s linear infinite forwards;
 }
 
@@ -120,7 +115,7 @@
   50%,
   70%,
   90% {
-    box-shadow: 0px 0px 5px 2px #67e8f9;
+    box-shadow: 0px 0px 5px 2px #34d399;
   }
 
   10%,
@@ -129,8 +124,8 @@
   100%,
   64%,
   80% {
-    box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4,
-      0px 0px 110px 20px #a5f3fc;
+    box-shadow: 0px 0px 5px 2px #34d399, 0px 0px 15px 5px #10b981,
+      0px 0px 110px 20px #a7f3d0;
   }
 }
 

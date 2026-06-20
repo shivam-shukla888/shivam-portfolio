@@ -11,7 +11,7 @@
 }
 
 .work-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 80px;
 }
 
@@ -60,9 +60,9 @@
 
 .project-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(94, 234, 212, 0.3);
+  border-color: rgba(16, 185, 129, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-              0 0 30px rgba(94, 234, 212, 0.05);
+              0 0 30px rgba(16, 185, 129, 0.05);
 }
 
 /* ── Image Container ── */
@@ -141,12 +141,12 @@
   border-radius: 30px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(94, 234, 212, 0.3);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
 .project-github-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(94, 234, 212, 0.5);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
   color: #0a0e17;
 }
 
@@ -244,8 +244,8 @@
 }
 
 .project-card:hover .tech-badge {
-  border-color: rgba(94, 234, 212, 0.2);
-  background: rgba(94, 234, 212, 0.03);
+  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.03);
 }
 
 /* ── Project Footer ── */
@@ -271,7 +271,7 @@
 }
 
 .project-case-study-btn:hover {
-  background: rgba(94, 234, 212, 0.08);
+  background: rgba(16, 185, 129, 0.08);
   border-color: var(--accentColor);
   color: var(--accentColor);
   transform: translateY(-1px);

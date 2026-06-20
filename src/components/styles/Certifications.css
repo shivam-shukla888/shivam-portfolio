@@ -16,12 +16,7 @@
   font-size: 70px;
   line-height: 70px;
   font-weight: 400;
-  text-align: center;
-  background: linear-gradient(0deg, #0d9488, #ffffff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  text-align: left;
   margin-top: 50px;
   margin-bottom: 90px;
 }
@@ -86,7 +81,7 @@
   display: inline-block;
   margin-top: 10px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -97,7 +92,7 @@
 
 .certificate-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(20, 184, 166, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .certifications-timeline {
@@ -108,7 +103,7 @@
   width: 3px;
   height: 100%;
   background-image: linear-gradient(to top,
-      #14b8a6 20%,
+      #10b981 20%,
       var(--accentColor) 50%,
       transparent 95%);
   max-height: 0%;
@@ -119,12 +114,12 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #14b8a6;
+  background-color: #10b981;
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 8px #5eead4,
-    0px 0px 110px 20px #a5f3fc;
+  box-shadow: 0px 0px 5px 2px #34d399, 0px 0px 15px 8px #10b981,
+    0px 0px 110px 20px #a7f3d0;
   animation: certifications-timeline 0.8s linear infinite forwards;
 }
 
@@ -135,7 +130,7 @@
   50%,
   70%,
   90% {
-    box-shadow: 0px 0px 5px 2px #67e8f9;
+    box-shadow: 0px 0px 5px 2px #34d399;
   }
 
   10%,
@@ -144,8 +139,8 @@
   100%,
   64%,
   80% {
-    box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4,
-      0px 0px 110px 20px #a5f3fc;
+    box-shadow: 0px 0px 5px 2px #34d399, 0px 0px 15px 5px #10b981,
+      0px 0px 110px 20px #a7f3d0;
   }
 }
 

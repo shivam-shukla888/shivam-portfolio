@@ -15,7 +15,7 @@
 }
 
 .why-hire-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 80px;
 }
 
@@ -36,7 +36,7 @@
   font-weight: 300;
   color: #adacac;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.6;
 }
 
@@ -67,10 +67,10 @@
 
 .why-hire-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(94, 234, 212, 0.3);
+  border-color: rgba(16, 185, 129, 0.3);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
-              0 0 25px rgba(94, 234, 212, 0.05);
+              0 0 25px rgba(16, 185, 129, 0.05);
 }
 
 .why-hire-icon {
@@ -107,7 +107,7 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  background: radial-gradient(circle at top left, rgba(94, 234, 212, 0.05), transparent 60%),
+  background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.05), transparent 60%),
               rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
@@ -160,12 +160,12 @@
 .recruiter-primary-btn {
   background: var(--accentColor);
   color: #0a0e17;
-  box-shadow: 0 4px 15px rgba(94, 234, 212, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
 }
 
 .recruiter-primary-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(94, 234, 212, 0.4);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
   background: #a5f3fc;
   color: #0a0e17;
 }

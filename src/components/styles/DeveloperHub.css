@@ -15,7 +15,7 @@
 }
 
 .dev-hub-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 80px;
 }
 
@@ -36,7 +36,7 @@
   font-weight: 300;
   color: #adacac;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.6;
 }
 
@@ -67,10 +67,10 @@
 
 .dev-hub-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(94, 234, 212, 0.3);
+  border-color: rgba(16, 185, 129, 0.3);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
-              0 0 25px rgba(94, 234, 212, 0.05);
+              0 0 25px rgba(16, 185, 129, 0.05);
 }
 
 .card-header {
@@ -139,12 +139,12 @@
   text-decoration: none;
   transition: all 0.3s ease;
   width: fit-content;
-  box-shadow: 0 4px 15px rgba(94, 234, 212, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
 }
 
 .github-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(94, 234, 212, 0.4);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
   background: #a5f3fc;
 }
 
@@ -169,8 +169,8 @@
 }
 
 .dev-hub-card:hover .tech-pill {
-  border-color: rgba(94, 234, 212, 0.2);
-  background: rgba(94, 234, 212, 0.03);
+  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.03);
 }
 
 .tech-pill:hover {
@@ -204,7 +204,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 20px rgba(94, 234, 212, 0.4);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   animation: resumePulse 8s infinite;
   pointer-events: auto;
@@ -212,17 +212,17 @@
 
 .floating-resume-btn:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(94, 234, 212, 0.6);
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
   background: #a5f3fc;
   color: #0a0e17;
 }
 
 @keyframes resumePulse {
   0%, 90%, 100% {
-    box-shadow: 0 4px 20px rgba(94, 234, 212, 0.4);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
   }
   95% {
-    box-shadow: 0 0 0 12px rgba(94, 234, 212, 0);
+    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
   }
 }
 

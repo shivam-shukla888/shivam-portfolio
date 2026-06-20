@@ -31,7 +31,7 @@ const DeveloperHub = () => {
                 </div>
                 <div className="stat-item">
                   <span className="stat-label">Primary Languages:</span>
-                  <span className="stat-value">Java, TypeScript, SQL, Python</span>
+                  <span className="stat-value">Java, SQL, Python</span>
                 </div>
                 <div className="stat-item">
                   <span className="stat-label">Latest Projects:</span>

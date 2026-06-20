@@ -62,14 +62,12 @@ const setCharacter = (
             },
             undefined,
             (error) => {
-              console.error("Error loading GLTF model:", error);
               reject(error);
             }
           );
         })
         .catch((err) => {
           reject(err);
-          console.error(err);
         });
     });
   };

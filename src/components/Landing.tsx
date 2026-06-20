@@ -12,26 +12,16 @@ const Landing = ({ children }: PropsWithChildren) => {
             <div className="landing-photo">
               <img src="/images/profile.png" alt="Shivam Shukla" />
             </div>
-            <h2>Hello! I'm</h2>
-            <h1 className="landing-name">
-              SHIVAM
-              <br />
-              <span>SHUKLA</span>
-            </h1>
+            <h1 className="landing-name">Shivam Shukla</h1>
           </div>
 
           <div className="landing-info">
-            <h2 className="landing-headline">
-              Backend Engineer &amp; <br />
-              <span>AI Agent Developer</span>
-            </h2>
+            <h2 className="landing-headline">Backend &amp; AI Developer</h2>
 
             <p className="landing-subheadline">
-              Building production-ready AI agents, WhatsApp automations, and scalable backend systems using Java, Spring Boot, LLMs, and Cloud Infrastructure.
-            </p>
-
-            <p className="landing-bio">
-              I build real-world AI products for the Indian market, combining backend engineering, automation, and conversational AI to solve practical business problems.
+              I build AI agents and backend systems that run in production.
+              <br />
+              Currently open to Backend / AI Developer roles — available immediately.
             </p>
 
             <div className="landing-ctas">
@@ -40,9 +30,6 @@ const Landing = ({ children }: PropsWithChildren) => {
               </a>
               <a href="/Resume.pdf" target="_blank" download="Shivam_Shukla_Resume.pdf" rel="noreferrer" className="cta-btn secondary-cta" data-cursor="disable">
                 Download Resume <MdDownload className="cta-icon" />
-              </a>
-              <a href="https://github.com/shivam-shukla888" target="_blank" rel="noopener noreferrer" className="cta-btn third-cta" data-cursor="disable">
-                <FaGithub className="cta-icon" /> GitHub Profile
               </a>
             </div>
 

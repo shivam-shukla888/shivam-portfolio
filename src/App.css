@@ -1,5 +1,9 @@
 .section-container {
   width: 1300px;
+  max-width: calc(100% - 240px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 .title,
 .para {
@@ -12,17 +16,18 @@
 @media only screen and (max-width: 1600px) {
   .section-container {
     width: 1200px;
-    max-width: calc(100% - 160px);
+    max-width: calc(100% - 200px);
   }
 }
 @media only screen and (max-width: 1400px) {
   .section-container {
     width: 900px;
+    max-width: calc(100% - 180px);
   }
 }
 @media only screen and (max-width: 900px) {
   .section-container {
-    width: 500px;
+    width: 100%;
     max-width: var(--cWidth);
   }
 }
@@ -37,7 +42,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0a0e17;
+  background-color: #121214;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +53,7 @@
   width: 50px;
   height: 50px;
   border: 3px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #5eead4;
+  border-top-color: #10b981;
   border-radius: 50%;
   animation: spinApp 1s linear infinite;
 }

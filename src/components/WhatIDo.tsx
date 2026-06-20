@@ -91,19 +91,19 @@ const WhatIDo = () => {
               <h3>BACKEND</h3>
               <h4>Scalable Server Architecture</h4>
               <p>
-                Designing robust APIs and microservices. From high-impact engineering teams to
-                complex business logic, I build backends that scale.
+                Designing robust RESTful APIs, business logic, and databases. I build reliable, 
+                high-performance backends that scale.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">Java</div>
                 <div className="what-tags">Spring Boot</div>
-                <div className="what-tags">Hibernate</div>
+                <div className="what-tags">Hibernate ORM</div>
                 <div className="what-tags">MySQL</div>
-                <div className="what-tags">RESTful APIs</div>
-                <div className="what-tags">Microservices</div>
+                <div className="what-tags">REST APIs</div>
+                <div className="what-tags">MVC Architecture</div>
                 <div className="what-tags">AWS EC2</div>
-                <div className="what-tags">Git</div>
+                <div className="what-tags">Postman</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -127,22 +127,21 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>AI TOOLS & SKILLS</h3>
-              <h4>Development & Integration Platforms</h4>
+              <h3>AI & INTEGRATION</h3>
+              <h4>AI Agent & Automation Development</h4>
               <p>
-                Modern AI development tools and platforms for building intelligent
-                agents, automation workflows, and cutting-edge solutions.
+                Building production-ready AI agents, WhatsApp automations, and intelligent systems 
+                using modern LLMs, orchestration, and APIs.
               </p>
               <h5>Skillset & Tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Stitch</div>
-                <div className="what-tags">Windsurf</div>
-                <div className="what-tags">Google AI Studio</div>
-                <div className="what-tags">Cursor</div>
-                <div className="what-tags">Ollama</div>
-                <div className="what-tags">Perplexity</div>
+                <div className="what-tags">Groq API</div>
+                <div className="what-tags">Twilio API</div>
+                <div className="what-tags">LangChain4j</div>
+                <div className="what-tags">Tool Calling</div>
+                <div className="what-tags">Python</div>
                 <div className="what-tags">AI Agents</div>
-                <div className="what-tags">Gemini API</div>
+                <div className="what-tags">LLM Tooling</div>
               </div>
               <div className="what-arrow"></div>
             </div>

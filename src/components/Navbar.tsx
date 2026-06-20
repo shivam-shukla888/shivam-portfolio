@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
 const Navbar = () => {
+  const [menuActive, setMenuActive] = useState(false);
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -29,6 +31,7 @@ const Navbar = () => {
     links.forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       const handler = (e: MouseEvent) => {
+        setMenuActive(false);
         if (window.innerWidth > 1024) {
           e.preventDefault();
           const elemTarget = e.currentTarget as HTMLAnchorElement;
@@ -67,7 +70,7 @@ const Navbar = () => {
         >
           theshivamshukla.4uu@gmail.com
         </a>
-        <ul>
+        <ul className={menuActive ? "active" : ""}>
           <li>
             <a data-href="#about" href="#about">
               <HoverLinks text="ABOUT" />
@@ -84,6 +87,11 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+        <div className={`hamburger-menu ${menuActive ? "active" : ""}`} onClick={() => setMenuActive(!menuActive)}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
       </div>
 
       <div className="landing-circle1 blob"></div>

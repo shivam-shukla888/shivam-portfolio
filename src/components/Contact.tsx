@@ -67,7 +67,7 @@ const Contact = () => {
               Designed and Developed <br /> by <span>Shivam Shukla</span>
             </h2>
             <h5>
-              <MdCopyright /> 2026
+              <MdCopyright /> 2025 Shivam Shukla
             </h5>
           </div>
         </div>

@@ -28,3 +28,6 @@ backup/
 .env
 *.tsbuildinfo
 .tsbuildinfo
+*.ps1
+test.js
+copy_via_node.js

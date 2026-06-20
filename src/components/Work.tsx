@@ -1,9 +1,6 @@
-import { lazy, Suspense, useState } from "react";
 import "./styles/Work.css";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-
-const ProjectModal = lazy(() => import("./ProjectModal"));
 
 const projects = [
   {
@@ -41,7 +38,7 @@ const projects = [
     title: "V-Mitra",
     subtitle: "Voice AI Companion",
     description: "Voice-enabled AI companion designed for small businesses and local vendors, enabling natural conversations and smart assistance.",
-    tools: ["Java", "Spring Boot", "React", "Gemini API"],
+    tools: ["Java", "Spring Boot", "React", "Groq API"],
     highlights: [
       "Voice interaction",
       "AI assistance",
@@ -54,8 +51,6 @@ const projects = [
 ];
 
 const Work = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState<"yojnasetu" | "realguard" | "vmitra" | null>(null);
-
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -121,13 +116,6 @@ const Work = () => {
                 </div>
 
                 <div className="project-footer">
-                  <button
-                    onClick={() => setSelectedProjectId(project.id)}
-                    className="project-case-study-btn"
-                    data-cursor="disable"
-                  >
-                    View Case Study
-                  </button>
                   <a
                     href={project.link}
                     target="_blank"
@@ -143,12 +131,6 @@ const Work = () => {
           ))}
         </div>
       </div>
-
-      {selectedProjectId && (
-        <Suspense fallback={null}>
-          <ProjectModal projectId={selectedProjectId} onClose={() => setSelectedProjectId(null)} />
-        </Suspense>
-      )}
     </div>
   );
 };

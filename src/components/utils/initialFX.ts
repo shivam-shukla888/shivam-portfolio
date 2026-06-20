@@ -83,7 +83,6 @@ export function initialFX() {
       }
     );
   } catch (error) {
-    console.error("GSAP SplitText or animation failed to run:", error);
     // Fallback: make sure everything is visible immediately
     gsap.set([
       ".landing-headline", ".landing-intro h2", ".landing-name",
