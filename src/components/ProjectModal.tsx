@@ -52,7 +52,7 @@ const caseStudiesData = {
       "Secure CRM endpoint design and data protection protocols."
     ],
     github: "https://github.com/shivam-shukla888/RealGuard",
-    images: ["/images/realguard-v2.png"]
+    images: ["/images/realguard.png?v=3"]
   },
   vmitra: {
     title: "V-Mitra",

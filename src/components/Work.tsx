@@ -30,7 +30,7 @@ const projects = [
       "Dynamic mortgage & EMI loan profiling in-chat",
       "Automated site visit scheduling & broker notification"
     ],
-    images: ["/images/realguard-v2.png"],
+    images: ["/images/realguard.png?v=3"],
     link: "https://github.com/shivam-shukla888/RealGuard",
   },
   {
