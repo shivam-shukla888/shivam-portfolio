@@ -109,6 +109,17 @@ const Scene = () => {
         });
       };
 
+      let isCanvasVisible = true;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isCanvasVisible = entry.isIntersecting;
+        },
+        { threshold: 0 }
+      );
+      if (containerElement) {
+        observer.observe(containerElement);
+      }
+
       document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
@@ -120,6 +131,7 @@ const Scene = () => {
       const animate = () => {
         if (document.hidden) return;
         animationFrameId = requestAnimationFrame(animate);
+        if (!isCanvasVisible) return;
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -146,6 +158,7 @@ const Scene = () => {
       
       return () => {
         clearTimeout(debounce);
+        observer.disconnect();
         document.removeEventListener("visibilitychange", onVisibilityChange);
         document.removeEventListener("mousemove", onMouseMove);
         

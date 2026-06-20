@@ -28,16 +28,24 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
+    let lastWidth = window.innerWidth;
     const resizeHandler = () => {
-      setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
+      const currentWidth = window.innerWidth;
+      if (currentWidth !== lastWidth) {
+        lastWidth = currentWidth;
+        setSplitText();
+        setIsDesktopView(currentWidth > 1024);
+      }
     };
-    resizeHandler();
+    
+    // Set split text and views on mount
+    setSplitText();
+    
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">
