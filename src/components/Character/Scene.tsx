@@ -80,7 +80,11 @@ const Scene = () => {
       let mouse = { x: 0, y: 0 },
         interpolation = { x: 0.1, y: 0.2 };
 
+      let lastMouseMoveTime = 0;
       const onMouseMove = (event: MouseEvent) => {
+        const now = performance.now();
+        if (now - lastMouseMoveTime < 16.67) return; // ~60fps throttle
+        lastMouseMoveTime = now;
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
       
@@ -110,28 +114,11 @@ const Scene = () => {
       };
 
       let isCanvasVisible = true;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          isCanvasVisible = entry.isIntersecting;
-        },
-        { threshold: 0 }
-      );
-      if (containerElement) {
-        observer.observe(containerElement);
-      }
-
-      document.addEventListener("mousemove", onMouseMove);
-      const landingDiv = document.getElementById("landingDiv");
-      if (landingDiv) {
-        landingDiv.addEventListener("touchstart", onTouchStart);
-        landingDiv.addEventListener("touchend", onTouchEnd);
-      }
-
       let animationFrameId: number;
+
       const animate = () => {
-        if (document.hidden) return;
-        animationFrameId = requestAnimationFrame(animate);
-        if (!isCanvasVisible) return;
+        if (document.hidden || !isCanvasVisible) return;
+        
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -148,11 +135,39 @@ const Scene = () => {
           mixer.update(delta);
         }
         renderer.render(scene, camera);
+        animationFrameId = requestAnimationFrame(animate);
       };
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          const wasVisible = isCanvasVisible;
+          isCanvasVisible = entry.isIntersecting;
+          if (isCanvasVisible && !wasVisible) {
+            animate();
+          } else if (!isCanvasVisible && wasVisible) {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+            }
+          }
+        },
+        { threshold: 0 }
+      );
+      if (containerElement) {
+        observer.observe(containerElement);
+      }
+
+      document.addEventListener("mousemove", onMouseMove);
+      const landingDiv = document.getElementById("landingDiv");
+      if (landingDiv) {
+        landingDiv.addEventListener("touchstart", onTouchStart);
+        landingDiv.addEventListener("touchend", onTouchEnd);
+      }
+
       animate();
       
       const onVisibilityChange = () => {
-        if (!document.hidden) animate();
+        if (!document.hidden && isCanvasVisible) animate();
+        else if (document.hidden && animationFrameId) cancelAnimationFrame(animationFrameId);
       };
       document.addEventListener("visibilitychange", onVisibilityChange);
       

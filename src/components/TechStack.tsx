@@ -161,36 +161,20 @@ const TechStack = () => {
   }, [textures]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workElem = document.getElementById("work");
-      if (!workElem) return;
-      const threshold = workElem.getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
-    };
+    const el = document.querySelector(".techstack");
+    if (!el) return;
 
-    const clickHandlers: { element: HTMLAnchorElement; handler: () => void }[] = [];
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      const handler = () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      };
-      element.addEventListener("click", handler);
-      clickHandlers.push({ element, handler });
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
 
-    window.addEventListener("scroll", handleScroll);
+    observer.observe(el);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clickHandlers.forEach(({ element, handler }) => {
-        element.removeEventListener("click", handler);
-      });
+      observer.disconnect();
       // Dispose materials and textures to free GPU memory
       materials.forEach((material) => material.dispose());
       textures.forEach((texture) => texture.dispose());

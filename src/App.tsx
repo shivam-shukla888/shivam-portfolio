@@ -1,13 +1,10 @@
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LoadingSpinner from "./components/LoadingSpinner";
+import MainContainer from "./components/MainContainer";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const CharacterModel = lazy(() => import("./components/Character"));
-const MainContainer = lazy(() => import("./components/MainContainer"));
 
 const App = () => {
   useEffect(() => {
@@ -25,11 +22,9 @@ const App = () => {
   }, []);
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <MainContainer>
-        <CharacterModel />
-      </MainContainer>
-    </Suspense>
+    <MainContainer>
+      {/* 3D CharacterModel removed for performance & clean layout */}
+    </MainContainer>
   );
 };
 

@@ -7,6 +7,8 @@
 }
 
 .work-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
   margin: auto;
 }
 
@@ -32,7 +34,7 @@
   font-weight: 300;
   color: #adacac;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.6;
 }
 
@@ -53,6 +55,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

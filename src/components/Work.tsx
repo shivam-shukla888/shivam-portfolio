@@ -10,10 +10,10 @@ const projects = [
     description: "An AI-powered WhatsApp assistant helping Indian citizens discover relevant government schemes through natural language conversations.",
     tools: ["Java", "Spring Boot", "Groq API", "Twilio WhatsApp API", "MySQL", "AWS EC2"],
     highlights: [
-      "WhatsApp-based interaction",
-      "Multilingual support",
-      "AI-powered scheme matching",
-      "Real-world India-focused use case"
+      "WhatsApp conversational interface (Twilio API)",
+      "Multilingual NLP support (Hindi, English, Hinglish)",
+      "Dynamic LLM-based eligibility matching (Groq API)",
+      "AWS EC2 containerized backend & MySQL scheme DB"
     ],
     images: ["/images/yojna setu 1.png", "/images/yojna setu 2.png"],
     link: "https://github.com/shivam-shukla888/Yojna-Setu",
@@ -22,13 +22,13 @@ const projects = [
     id: "realguard" as const,
     title: "RealGuard",
     subtitle: "AI Real Estate Assistant",
-    description: "An intelligent WhatsApp assistant that helps brokers and customers manage property inquiries, automate responses, and improve engagement.",
+    description: "An intelligent WhatsApp assistant that helps brokers and customers manage property inquiries, qualify leads, and automate client engagement.",
     tools: ["Java", "Spring Boot", "Twilio", "Groq LLM", "MySQL"],
     highlights: [
-      "AI-driven conversations",
-      "Lead qualification",
-      "Automated customer support",
-      "Real estate workflow automation"
+      "AI-driven automated buyer lead qualification",
+      "RERA registry verification & fraud detection APIs",
+      "Dynamic mortgage & EMI loan profiling in-chat",
+      "Automated site visit scheduling & broker notification"
     ],
     images: ["/images/realguard.png"],
     link: "https://github.com/shivam-shukla888/RealGuard",
@@ -40,10 +40,10 @@ const projects = [
     description: "Voice-enabled AI companion designed for small businesses and local vendors, enabling natural conversations and smart assistance.",
     tools: ["Java", "Spring Boot", "React", "Groq API"],
     highlights: [
-      "Voice interaction",
-      "AI assistance",
-      "Small business focused",
-      "Modern conversational interface"
+      "Multilingual voice-to-command intent resolution",
+      "Real-time React dashboard with stock & sales analytics",
+      "Localized GST tax profile calculations",
+      "Offline-resilient local business ledger tracking"
     ],
     images: ["/images/vmitra (1).png", "/images/vmitra (2).png"],
     link: "https://github.com/shivam-shukla888/V-Mitra-Smart-Ai-Companion",

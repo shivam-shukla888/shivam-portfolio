@@ -18,61 +18,54 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #10b981;
-  --backgroundColor: #121214;
+  --accentColor: #00d4a0;
+  --backgroundColor: #0a0a0a;
   --vh: 100vh;
   --vh: 100svh;
 }
 
-/* Global Typography Overrides */
-h2, h3, .title, .section-container h2, .section-container h3 {
-  font-size: 2rem !important;
-  font-weight: 700 !important;
-  color: #f5f5f5 !important;
-  text-align: left !important;
-  background: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: initial !important;
-  text-shadow: none !important;
-  letter-spacing: normal !important;
-  text-transform: none !important;
-}
-
-h2 span, h3 span, .title span, .section-container h2 span {
-  color: var(--accentColor) !important;
-  background: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: initial !important;
-  text-shadow: none !important;
-  text-transform: none !important;
-}
-
-p, .para {
-  font-size: 1rem !important;
-  line-height: 1.65 !important;
-  color: #9ca3af !important;
-  text-shadow: none !important;
-}
-
-p span, .para span {
-  color: var(--accentColor) !important;
-  background: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: initial !important;
-  text-shadow: none !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ── Global Typography Reset ── */
+h1, h2, h3, h4, h5, h6 {
   font-family: "Geist", sans-serif;
+  -webkit-text-fill-color: initial;
+  text-shadow: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  letter-spacing: normal;
+  text-transform: none;
 }
+
+/* Accent color on heading spans */
+h2 span, h3 span, h4 span {
+  color: var(--accentColor);
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
+/* ── Global Paragraph Reset ── */
+p {
+  font-family: "Geist", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #9ca3af;
+  text-shadow: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
+p span {
+  color: var(--accentColor);
+  text-shadow: none;
+}
+
 
 body {
   overflow: hidden;
@@ -107,7 +100,7 @@ main {
 body {
   margin: 0;
   height: auto;
-  background-color: #0c0c0e;
+  background-color: #0a0a0a;
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
@@ -152,6 +145,8 @@ body {
   margin: auto;
   margin-top: 50px;
   margin-bottom: -100px;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .techstack h2 {
@@ -175,4 +170,21 @@ body {
   .techstack h2 {
     font-size: 40px;
   }
+}
+
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+#smooth-content {
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }

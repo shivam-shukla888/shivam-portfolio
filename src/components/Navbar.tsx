@@ -60,15 +60,8 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a href="/#" className="navbar-logo" data-cursor="disable">
           SS
-        </a>
-        <a
-          href="mailto:theshivamshukla.4uu@gmail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          theshivamshukla.4uu@gmail.com
         </a>
         <ul className={menuActive ? "active" : ""}>
           <li>
@@ -94,8 +87,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="landing-circle1 blob"></div>
-      <div className="landing-circle2 blob"></div>
       <div className="nav-fade"></div>
     </>
   );

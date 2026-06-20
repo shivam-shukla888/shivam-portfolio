@@ -206,7 +206,7 @@
   gap: 8px;
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: resumePulse 8s infinite;
+  animation: none;
   pointer-events: auto;
 }
 
@@ -215,15 +215,6 @@
   box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
   background: #a5f3fc;
   color: #0a0e17;
-}
-
-@keyframes resumePulse {
-  0%, 90%, 100% {
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
-  }
-  95% {
-    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
-  }
 }
 
 /* ── Responsive ── */

@@ -16,7 +16,7 @@ export function initialFX() {
 
   try {
     gsap.to("body", {
-      backgroundColor: "#0a0e17",
+      backgroundColor: "#0a0a0a",
       duration: 0.5,
       delay: 1,
     });
@@ -82,7 +82,7 @@ export function initialFX() {
         delay: 0.1,
       }
     );
-  } catch (error) {
+  } catch {
     // Fallback: make sure everything is visible immediately
     gsap.set([
       ".landing-headline", ".landing-intro h2", ".landing-name",

@@ -13,14 +13,14 @@ const Career = () => {
             <div className="career-dot"></div>
           </div>
           <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Java with Spring Boot Intern</h4>
-                <h5>Soft Pro</h5>
-              </div>
+            <div className="career-role">
+              <h4>Java with Spring Boot Intern</h4>
+              <h5>Soft Pro</h5>
+            </div>
+            <div className="career-year">
               <h3>2025</h3>
             </div>
-            <p>
+            <p className="career-desc">
               Developed 8+ RESTful APIs using Java and Spring Boot following MVC
               architecture. Integrated MySQL with Hibernate ORM, improving query
               performance by 20%. Worked in an Agile environment.
@@ -31,28 +31,28 @@ const Career = () => {
             </p>
           </div>
           <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>B.Tech in Computer Science</h4>
-                <h5>SRMS CET&R, Bareilly</h5>
-                <h3>2022 - 2026</h3>
-              </div>
+            <div className="career-role">
+              <h4>B.Tech in Computer Science</h4>
+              <h5>SRMS CET&R, Bareilly</h5>
             </div>
-            <p>
+            <div className="career-year">
+              <h3>2022 - 2026</h3>
+            </div>
+            <p className="career-desc">
               Completed Computer Science Engineering (2026) with focus on backend development, 
               systems design, and AI Agent integration. Shipped three production AI agents 
               (Yojna Setu, RealGuard, V-Mitra) during final year using Java, Spring Boot, and LLM APIs.
             </p>
           </div>
           <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Secondary School</h4>
-                <h5>Nav Jeevan Mission School</h5>
-              </div>
+            <div className="career-role">
+              <h4>Secondary School</h4>
+              <h5>Nav Jeevan Mission School</h5>
+            </div>
+            <div className="career-year">
               <h3>2021</h3>
             </div>
-            <p>
+            <p className="career-desc">
               Completed Senior Secondary (CBSE) with a strong foundation in science
               and mathematics, preparing for higher education in engineering.
             </p>
