@@ -10,9 +10,6 @@ const MainContainer = lazy(() => import("./components/MainContainer"));
 
 const App = () => {
   useEffect(() => {
-    // Refresh ScrollTrigger after all components mount
-    ScrollTrigger.refresh();
-
     // Refresh ScrollTrigger after fonts load
     if (document.fonts) {
       document.fonts.ready.then(() => {
@@ -21,8 +18,8 @@ const App = () => {
     }
 
     return () => {
-      // Clear scroll memory on unmount
-      ScrollTrigger.clearScrollMemory();
+      // Correctly kill all ScrollTrigger instances
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
@@ -41,7 +38,7 @@ const App = () => {
             justifyContent: "center",
             alignItems: "center",
             color: "#ffffff",
-            zIndex: 999999999,
+            zIndex: 9999,
           }}
         >
           <div
@@ -54,18 +51,11 @@ const App = () => {
               animation: "spinApp 1s linear infinite",
             }}
           ></div>
-          <style>{`
-            @keyframes spinApp {
-              to { transform: rotate(360deg); }
-            }
-          `}</style>
         </div>
       }
     >
       <MainContainer>
-        <Suspense fallback={null}>
-          <CharacterModel />
-        </Suspense>
+        <CharacterModel />
       </MainContainer>
     </Suspense>
   );

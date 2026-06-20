@@ -26,3 +26,7 @@
     max-width: var(--cWidth);
   }
 }
+
+@keyframes spinApp {
+  to { transform: rotate(360deg); }
+}
