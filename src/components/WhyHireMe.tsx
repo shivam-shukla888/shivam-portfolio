@@ -92,7 +92,7 @@ const WhyHireMe = () => {
           </p>
           <div className="recruiter-cta-btns">
             <a
-              href="/resume.pdf"
+              href="/Resume.pdf"
               target="_blank"
               download="Shivam_Shukla_Resume.pdf"
               rel="noreferrer"

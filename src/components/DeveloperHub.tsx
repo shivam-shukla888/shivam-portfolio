@@ -86,7 +86,7 @@ const DeveloperHub = () => {
 
       {/* Floating Action Resume Button */}
       <a
-        href="/resume.pdf"
+        href="/Resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="floating-resume-btn"

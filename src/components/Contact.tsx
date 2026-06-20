@@ -16,7 +16,7 @@ const Contact = () => {
             </p>
             <h4>Resume</h4>
             <a
-              href="/resume.pdf"
+              href="/Resume.pdf"
               target="_blank"
               download="Shivam_Shukla_Resume.pdf"
               className="resume-download-btn"

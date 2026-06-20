@@ -38,7 +38,7 @@ const Landing = ({ children }: PropsWithChildren) => {
               <a href="#work" className="cta-btn primary-cta" data-cursor="disable">
                 View Projects <MdArrowForward className="cta-icon" />
               </a>
-              <a href="/resume.pdf" target="_blank" download="Shivam_Shukla_Resume.pdf" rel="noreferrer" className="cta-btn secondary-cta" data-cursor="disable">
+              <a href="/Resume.pdf" target="_blank" download="Shivam_Shukla_Resume.pdf" rel="noreferrer" className="cta-btn secondary-cta" data-cursor="disable">
                 Download Resume <MdDownload className="cta-icon" />
               </a>
               <a href="https://github.com/shivam-shukla888" target="_blank" rel="noopener noreferrer" className="cta-btn third-cta" data-cursor="disable">
