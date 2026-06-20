@@ -58,7 +58,7 @@ const DeveloperHub = () => {
                 <h3>Current Tech Stack</h3>
               </div>
               <div className="tech-badge-container">
-                {["Java", "Spring Boot", "MySQL", "Groq", "LangChain4j", "Twilio", "AWS", "Docker", "React"].map(
+                {["Java", "Spring Boot", "MySQL", "Hibernate", "Python", "Groq API", "LangChain4j", "Twilio API", "AWS EC2", "REST APIs", "React"].map(
                   (tech, idx) => (
                     <span key={idx} className="tech-pill">
                       {tech}

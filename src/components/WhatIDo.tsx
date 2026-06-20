@@ -102,7 +102,7 @@ const WhatIDo = () => {
                 <div className="what-tags">MySQL</div>
                 <div className="what-tags">RESTful APIs</div>
                 <div className="what-tags">Microservices</div>
-                <div className="what-tags">Docker</div>
+                <div className="what-tags">AWS EC2</div>
                 <div className="what-tags">Git</div>
               </div>
               <div className="what-arrow"></div>
