@@ -29,7 +29,8 @@ const caseStudiesData = {
       "Building resilient webhooks and rate-limiting integrations.",
       "Scalable relational database modeling for dynamic scheme definitions."
     ],
-    github: "https://github.com/shivam-shukla888/Yojna-Setu"
+    github: "https://github.com/shivam-shukla888/Yojna-Setu",
+    images: ["/images/yojna setu 1.png", "/images/yojna setu 2.png"]
   },
   realguard: {
     title: "RealGuard",
@@ -50,7 +51,8 @@ const caseStudiesData = {
       "Event-driven broker notification systems.",
       "Secure CRM endpoint design and data protection protocols."
     ],
-    github: "https://github.com/shivam-shukla888/RealGuard"
+    github: "https://github.com/shivam-shukla888/RealGuard",
+    images: ["/images/realguard.png"]
   },
   vmitra: {
     title: "V-Mitra",
@@ -71,7 +73,8 @@ const caseStudiesData = {
       "Multi-platform database syncing.",
       "Integrating dynamic tax engine rules for localized business operations."
     ],
-    github: "https://github.com/shivam-shukla888/V-Mitra-Smart-Ai-Companion"
+    github: "https://github.com/shivam-shukla888/V-Mitra-Smart-Ai-Companion",
+    images: ["/images/vmitra (1).png", "/images/vmitra (2).png"]
   }
 };
 
@@ -124,6 +127,16 @@ const ProjectModal = ({ projectId, onClose }: ProjectModalProps) => {
                   ))}
                 </ul>
               </div>
+              {data.images && data.images.length > 0 && (
+                <div className="case-study-showcase">
+                  <h5>Product Screenshots</h5>
+                  <div className="showcase-gallery">
+                    {data.images.map((img, idx) => (
+                      <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} className="showcase-img" />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

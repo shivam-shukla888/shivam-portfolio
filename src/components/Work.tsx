@@ -18,7 +18,7 @@ const projects = [
       "AI-powered scheme matching",
       "Real-world India-focused use case"
     ],
-    image: "/images/yojnasetu.png",
+    images: ["/images/yojna setu 1.png", "/images/yojna setu 2.png"],
     link: "https://github.com/shivam-shukla888/Yojna-Setu",
   },
   {
@@ -33,7 +33,7 @@ const projects = [
       "Automated customer support",
       "Real estate workflow automation"
     ],
-    image: "/images/realguard.png",
+    images: ["/images/realguard.png"],
     link: "https://github.com/shivam-shukla888/RealGuard",
   },
   {
@@ -48,7 +48,7 @@ const projects = [
       "Small business focused",
       "Modern conversational interface"
     ],
-    image: "/images/vmitra (1).png",
+    images: ["/images/vmitra (1).png", "/images/vmitra (2).png"],
     link: "https://github.com/shivam-shukla888/V-Mitra-Smart-Ai-Companion",
   },
 ];
@@ -72,7 +72,16 @@ const Work = () => {
           {projects.map((project, index) => (
             <div className="project-card" key={index}>
               <div className="project-image-container">
-                <img src={project.image} alt={project.title} className="project-image" />
+                <div className={`project-images-wrapper ${project.images.length > 1 ? "split" : ""}`}>
+                  {project.images.map((imgUrl, imgIdx) => (
+                    <img
+                      key={imgIdx}
+                      src={imgUrl}
+                      alt={`${project.title} screenshot ${imgIdx + 1}`}
+                      className="project-image"
+                    />
+                  ))}
+                </div>
                 <div className="project-image-overlay">
                   <a
                     href={project.link}
