@@ -27,11 +27,14 @@ const Scene = () => {
         alpha: true,
         antialias: true,
       });
+      const containerElement = canvasDiv.current;
       renderer.setSize(container.width, container.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
-      canvasDiv.current.appendChild(renderer.domElement);
+      if (containerElement) {
+        containerElement.appendChild(renderer.domElement);
+      }
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
       camera.position.z = 10;
@@ -40,7 +43,7 @@ const Scene = () => {
       camera.updateProjectionMatrix();
 
       let headBone: THREE.Object3D | null = null;
-      let screenLight: any | null = null;
+      let screenLight: THREE.Object3D | null = null;
       let mixer: THREE.AnimationMixer;
 
       const clock = new THREE.Clock();
@@ -178,8 +181,8 @@ const Scene = () => {
         scene.clear();
         renderer.dispose();
         
-        if (canvasDiv.current) {
-          canvasDiv.current.removeChild(renderer.domElement);
+        if (containerElement && renderer.domElement.parentNode === containerElement) {
+          containerElement.removeChild(renderer.domElement);
         }
       };
     }

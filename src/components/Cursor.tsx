@@ -29,13 +29,14 @@ const Cursor = () => {
     animationFrameId = requestAnimationFrame(loop);
 
     const interactiveElements = document.querySelectorAll("[data-cursor]");
-    const listeners: { element: HTMLElement; type: string; handler: any }[] = [];
+    const listeners: { element: HTMLElement; type: string; handler: EventListener }[] = [];
 
     interactiveElements.forEach((item) => {
       const element = item as HTMLElement;
 
-      const onMouseOver = (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
+      const onMouseOver = (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        const target = mouseEvent.currentTarget as HTMLElement;
         const rect = target.getBoundingClientRect();
 
         if (element.dataset.cursor === "icons" && cursor) {

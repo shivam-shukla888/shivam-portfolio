@@ -25,11 +25,11 @@ export function initialFX() {
       type: "words,lines",
       linesClass: "split-line",
     });
-    var landingText2 = new SplitText(".landing-intro h2", {
+    const landingText2 = new SplitText(".landing-intro h2", {
       type: "chars,lines",
       linesClass: "split-line",
     });
-    var landingText3 = new SplitText(".landing-name", {
+    const landingText3 = new SplitText(".landing-name", {
       type: "chars,lines",
       linesClass: "split-line",
     });
